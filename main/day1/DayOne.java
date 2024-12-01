@@ -2,6 +2,7 @@ package main.day1;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ public class DayOne extends AocDay {
 
     List<Integer> listOne = new ArrayList<>();
     List<Integer> listTwo = new ArrayList<>();
+    Map<Integer, Integer> occurrencesMap = new HashMap<>();
     int totalDifference = 0;
     int similarityScore = 0;
 
@@ -31,6 +33,7 @@ public class DayOne extends AocDay {
     protected void initializeInput() {
         listOne = new ArrayList<>();
         listTwo = new ArrayList<>();
+        occurrencesMap = new HashMap<>();
         totalDifference = 0;
         similarityScore = 0;
     }
@@ -40,29 +43,29 @@ public class DayOne extends AocDay {
         String[] coordinates = input.split(COORDINATE_DELIMITER);
 
         listOne.add(Integer.parseInt(coordinates[0]));
-        listTwo.add(Integer.parseInt(coordinates[1]));
+
+        Integer listTwoCoordinate = Integer.parseInt(coordinates[1]);
+
+        if (occurrencesMap.containsKey(listTwoCoordinate)) {
+            occurrencesMap.put(listTwoCoordinate, occurrencesMap.get(listTwoCoordinate) + 1);
+        } else {
+            occurrencesMap.put(listTwoCoordinate, 1);
+        }
+
+        listTwo.add(listTwoCoordinate);
     }
 
     @Override
     protected void runLogic() {
         Collections.sort(listOne);
         Collections.sort(listTwo);
-        
-        int occurrences;
 
         for (int i = 0; i < listOne.size(); i++) {
 
             totalDifference += Math.abs(listOne.get(i) - listTwo.get(i));
-
-            occurrences = 0;
-
-            for (int j = 0; j < listTwo.size(); j++) {
-                if (listOne.get(i).equals(listTwo.get(j))) {
-                    occurrences += 1;
-                }
+            if (occurrencesMap.containsKey(listOne.get(i))) {
+                similarityScore += listOne.get(i) * occurrencesMap.get(listOne.get(i));
             }
-
-            similarityScore += occurrences * listOne.get(i);
         }
     }
 
