@@ -13,7 +13,7 @@ public class DayOneTest {
 
     @Test
     public void testDayOneSample1PartOne() throws Exception {
-        String fileName = "test/day1/testSample1.txt";
+        String fileName = "src/test/day1/testSample1.txt";
 
         underTest = new DayOne(fileName);
 
@@ -37,7 +37,7 @@ public class DayOneTest {
 
     @Test
     public void testDayOneSample1PartTwo() throws Exception {
-        String fileName = "test/day1/testSample1.txt";
+        String fileName = "src/test/day1/testSample1.txt";
 
         underTest = new DayOne(fileName);
 

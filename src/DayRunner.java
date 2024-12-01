@@ -1,8 +1,9 @@
-package main;
+
 
 import java.util.Map;
 import java.util.Scanner;
 
+import main.AocDay;
 import main.day1.DayOne;
 
 public class DayRunner {

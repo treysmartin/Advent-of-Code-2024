@@ -17,7 +17,7 @@ public class DayOne extends AocDay {
     int totalDifference = 0;
     int similarityScore = 0;
 
-    static final String DEFAULT_FILE_NAME = "main/day1/input.txt";
+    static final String DEFAULT_FILE_NAME = "src/main/day1/input.txt";
 
     public DayOne() {
         super(DEFAULT_FILE_NAME);
